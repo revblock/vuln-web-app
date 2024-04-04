@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Requester</title>
+  </head>
+  <body>
+    <h1>Cool Requester App</h1>
+    <h2>Hi, <%= username %></h2>
+
+    <h3>Send Healthcheck Request</h3>
+    <p>Enter the name of the app you want to check and send API request. Healthcheck API route will be added for you in the backend.</p>
+    <form method="post" action="/send-request">
+      <input type="text" name="app" placeholder="App Name" required />
+      <input type="submit" value="Send Request" />
+    </form>
+
+    <% if (!isAdmin) { %>
+      <h2>You are not an Admin</h2>
+    <% } %>
+
+
+    <% if (isAdmin) { %>
+      <h2>You are an Admin</h2>
+      <h3>Save output as formatted report</h3>
+      <form method="post" action="/send-request-formatted">
+        <input type="text" name="app" placeholder="App Name" required />
+        <input type="submit" value="Send Request" />
+      </form>
+    <% } %>
+  </body>
+</html>
